@@ -10,13 +10,13 @@
 // express or implied. See the License for the specific language governing permissions and
 // limitations under the License.
 //
-//! Test roqoqo QASM acceptance
+//! Test roqoqo QASM acceptance with QASM Backend
 
 use qoqo_calculator::CalculatorFloat;
 use roqoqo::{operations::*, Circuit};
 use roqoqo_qasm::Backend;
 use std::env::temp_dir;
-use std::fs;
+// use std::fs;
 use std::path::Path;
 
 /// Test generating a file for gate operations with QASM interface
@@ -65,6 +65,8 @@ fn test_acceptance_with_qasmbackend() {
 
     let read_in_path = temp_dir().join(Path::new("test_simple_rust.qasm"));
     let b = read_in_path.exists();
-    fs::remove_file(&read_in_path).unwrap();
+    // temp file is kept here since used in test_acceptance_with_qiskit().
+    // temp file will be removed in test_acceptance.py.
+    // fs::remove_file(&read_in_path).unwrap();
     assert!(b);
 }
